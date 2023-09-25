@@ -5,11 +5,24 @@ const run = async () => {
     await client.hSet('car',{
         color: 'red',
         year: '1950',
-       
-        owner : null || '',
-        service: undefined || ''
+    
+    }),
+    await client.hSet('Bike',{
+        color: 'Yelo',
+        year: '1911',
+    
+    }),await client.hSet('cyc',{
+        color: 'black',
+        year: '2010',
+    
     })
-    const car = await client.hGetAll('car');
-    console.log(car)
+    const result =await Promise.all([
+        client.hGetAll('car'),
+        client.hGetAll('Bike'),
+        client.hGetAll('cyc'),
+    ])
+    console.log(result)
 };
+
+
 run();
